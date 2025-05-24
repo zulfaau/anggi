@@ -260,12 +260,6 @@ h2.birthday-name-placeholder {
     transform: scale(1.05); /* Hanya scale, tidak ada translateY lagi */
 }
 
-.carousel-button.prev,
-.carousel-button.next {
-    /* Hapus properti left dan right yang menempatkannya di luar carousel */
-    /* Mereka sekarang diatur oleh flexbox dari .navigation-buttons */
-}
-
 /* Styling untuk Container Tombol Navigasi */
 .navigation-buttons {
     display: flex; /* Menggunakan flexbox untuk mengatur tombol */
