@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // --- Path Lagu Ulang Tahun Langsung ---
-    birthdaySong.src = 'Lagu.m4a'; //
+    birthdaySong.src = 'Lagu.m4a';
     birthdaySong.load();
 
     // --- Fungsi untuk Membuat dan Menambahkan Slide ke DOM ---
@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 playPauseButton.innerHTML = '<i class="fas fa-pause"></i> Jeda Musik';
             }
-            isPlaying = !isPlaying;
         } else {
             alert('Lagu belum dimuat. Pastikan path file musik benar di script.js.');
         }
