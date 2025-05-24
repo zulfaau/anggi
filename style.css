@@ -1,248 +1,12 @@
-/* Mengimpor semua font yang dibutuhkan dari Google Fonts.
-   Pastikan 'Indie Flower' juga diimpor di sini. */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&family=Charmonman:wght@400;700&family=Dancing+Script&family=Indie+Flower&display=swap');
-
-body {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #FFD1DC 0%, #B0E0E6 100%); /* Pink Muda ke Biru Muda */
-    color: #333;
-    overflow-x: hidden;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-}
-
-/* Konfetti (Opsional) - Sedikit sentuhan dekoratif */
-body::before, body::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.08;
-    z-index: -1;
-}
-
-body::before {
-    width: 250px;
-    height: 250px;
-    background: #FF69B4; /* Hot Pink */
-    top: -80px;
-    left: -80px;
-    animation: floatConfetti1 15s infinite ease-in-out;
-}
-
-body::after {
-    width: 180px;
-    height: 180px;
-    background: #8A2BE2; /* Blue Violet */
-    bottom: -60px;
-    right: -60px;
-    animation: floatConfetti2 18s infinite ease-in-out reverse;
-}
-
-@keyframes floatConfetti1 {
-    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-    50% { transform: translateY(-30px) translateX(30px) rotate(15deg); }
-}
-
-@keyframes floatConfetti2 {
-    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-    50% { transform: translateY(30px) translateX(-30px) rotate(-15deg); }
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    padding: 40px;
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    animation: slideInUp 1s ease-out;
-    border: 3px solid #FFC0CB; /* Border warna pastel */
-}
-
-@keyframes slideInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h1 {
-    font-family: 'Pacifico', cursive;
-    color: #e91e63; /* Merah muda cerah */
-    font-size: 3.5em;
-    margin-bottom: 10px;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
-}
-
-/* BAGIAN INI YANG DIUBAH UNTUK FONT "Halooooo Anggiii" */
-.intro-text {
-    font-family: 'Indie Flower', cursive; /* Menggunakan font Indie Flower */
-    font-size: 1.8em; /* Ukuran font tetap sedikit diperbesar agar menonjol */
-    color: #6a1b9a; /* Ungu */
-    margin-bottom: 30px;
-    font-weight: 400; /* Font ini biasanya hanya punya satu ketebalan */
-}
-
-/* Carousel / Slider */
-.carousel-container {
-    position: relative;
-    width: 360px; /* Diperbesar dari 320px */
-    height: 550px; /* Diperbesar dari 480px */
-    margin: 30px auto;
-    overflow: hidden; /* Penting untuk menyembunyikan slide lainnya */
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    height: 100%; /* Pastikan track mengisi container */
-}
-
-.carousel-slide {
-    min-width: 100%; /* Setiap slide mengambil 100% lebar container */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    text-align: center;
-    position: relative;
-    background: linear-gradient(135deg, #FFE0B2 0%, #FFCCBC 100%); /* Orange Pastel */
-    border-radius: 20px;
-    color: #444;
-}
-
-/* Kartu Ulang Tahun (di dalam slide) */
-.birthday-card {
-    cursor: pointer;
-    perspective: 1000px; /* Untuk efek 3D flip */
-}
-
-.birthday-card .card-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.birthday-card.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.birthday-card .card-front, .birthday-card .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    overflow: hidden; /* Sembunyikan overflow di bagian depan */
-}
-
-.birthday-card .card-front {
-    background: linear-gradient(45deg, #FFB6C1 0%, #FFC0CB 100%); /* Light Pink */
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.birthday-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%; /* Membuat foto bulat */
-    object-fit: cover;
-    border: 7px solid #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-}
-.birthday-image:hover {
-    transform: scale(1.03);
-}
-
-h2.birthday-name-placeholder { /* Ganti ID menjadi class karena akan ada banyak nama */
-    font-family: 'Pacifico', cursive;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.message-preview {
-    font-size: 1.1em;
-    font-style: italic;
-    opacity: 0.9;
-}
-
-.birthday-card .card-back {
-    background: linear-gradient(45deg, #87CEEB 0%, #ADD8E6 100%); /* Sky Blue */
-    color: #fff;
-    transform: rotateY(180deg);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    
-    justify-content: flex-start; /* Mulai konten dari atas */
-    align-items: flex-start; /* Teks rata kiri */
-    padding: 30px; /* Tambah padding agar tidak terlalu mepet */
-    height: 100%; /* Pastikan card-back mengisi tinggi elemen induknya */
-    box-sizing: border-box; /* Pastikan padding tidak menambah tinggi */
-    text-align: left; /* Rata kiri teks */
-}
-
-.message-text {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1.15em;
-    line-height: 1.6;
-    word-wrap: break-word;
-    white-space: pre-wrap; /* Mempertahankan spasi dan baris baru dari textarea */
-    color: #333;
-    width: 100%; /* Pastikan teks mengisi lebar padding */
-    
-    height: 100%; /* Agar teks bisa mengisi tinggi tersedia */
-    overflow-y: auto; /* Pindahkan overflow-y ke sini agar hanya teks yang discroll */
-    padding-right: 10px; /* Tambahkan padding agar scrollbar tidak menempel teks */
-    box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
-    
-    /* Styling scrollbar (hanya untuk browser WebKit seperti Chrome/Safari) */
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-    &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.6);
-    }
-}
-
-.birthday-card .card-back .message-text {
-    color: #fff; /* Teks putih di background biru */
-}
-
-
 /* Carousel Buttons */
 .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    /* Hapus atau ubah properti yang menempatkannya di tengah vertikal */
+    /* position: absolute; */ /* BISA DIHAPUS JIKA INGIN MENGGUNAKAN FLEXBOX DI BAWAH CONTAINER */
+    /* top: 50%; */          /* HAPUS INI */
+    /* transform: translateY(-50%); */ /* HAPUS INI */
+
+    /* Atur ulang agar mereka berada di bawah dan diatur menggunakan flexbox */
+    position: static; /* Ubah ke static agar tidak absolut di dalam carousel-container */
     background-color: rgba(255, 255, 255, 0.7);
     border: none;
     font-size: 2.5em;
@@ -252,128 +16,52 @@ h2.birthday-name-placeholder { /* Ganti ID menjadi class karena akan ada banyak 
     color: #8A2BE2; /* Blue Violet */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-    z-index: 10; /* Pastikan tombol di atas slide */
+    z-index: 10;
+    /* margin: 0 10px; */ /* Tambahkan margin jika ingin ada jarak antar tombol */
 }
 
 .carousel-button:hover {
     background-color: rgba(255, 255, 255, 0.9);
     color: #FF69B4; /* Hot Pink */
-    transform: translateY(-50%) scale(1.05);
+    transform: scale(1.05); /* Hanya scale, tidak ada translateY lagi */
 }
 
-.carousel-button.prev {
-    left: -60px; /* Posisi di luar carousel untuk efek */
-}
+.carousel-button.prev,
 .carousel-button.next {
-    right: -60px; /* Posisi di luar carousel untuk efek */
+    /* Hapus properti left dan right yang menempatkannya di luar carousel */
+    /* left: -60px; */
+    /* right: -60px; */
+    position: relative; /* Agar bisa diatur dengan margin dan diletakkan secara inline-block/flex item */
+    margin: 0 5px; /* Memberi jarak antara tombol */
 }
 
-/* Music Controls */
-.music-controls {
-    margin-top: 25px;
+/* Tambahkan styling baru untuk menempatkan tombol di bawah */
+.navigation-buttons {
+    display: flex;
+    justify-content: center; /* Pusatkan tombol secara horizontal */
+    gap: 15px; /* Jarak antara tombol */
+    margin-top: 20px; /* Jarak dari elemen di atasnya (musik) */
+    margin-bottom: 20px; /* Jarak ke elemen di bawahnya (slide counter) */
 }
 
-.music-controls button {
-    background: linear-gradient(45deg, #FF5722 0%, #FF9800 100%); /* Oranye ke Kuning */
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 35px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
 
-.music-controls button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-}
-
-.music-controls button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.slide-counter {
-    margin-top: 20px;
-    font-size: 1.1em;
-    color: #666;
-}
-
-/* Responsive Design */
+/* Sesuaikan media queries jika perlu, meskipun perubahan di atas akan otomatis berlaku */
 @media (max-width: 768px) {
-    .container {
-        padding: 30px;
-        max-width: 95%;
-    }
-    h1 {
-        font-size: 2.8em;
-    }
-    .intro-text {
-        font-size: 1.6em; /* Sesuaikan ukuran untuk mobile agar tetap terlihat */
-    }
-    .carousel-container {
-        width: 300px;
-        height: 480px;
-    }
-    .birthday-image {
-        width: 160px;
-        height: 160px;
-    }
-    h2.birthday-name-placeholder {
-        font-size: 2em;
-    }
-    .message-text {
-        font-size: 1.05em;
-    }
     .carousel-button {
         font-size: 2em;
         padding: 8px 12px;
-        left: -40px;
-        right: -40px;
-    }
-    .music-controls button {
-        padding: 12px 20px;
-        font-size: 1em;
+        /* Hapus atau sesuaikan left/right jika sebelumnya ada */
+        /* left: unset; */
+        /* right: unset; */
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 2.2em;
-    }
-    .intro-text {
-        font-size: 1.4em; /* Paling kecil untuk mobile */
-    }
-    .carousel-container {
-        width: 270px;
-        height: 450px;
-    }
-    .birthday-image {
-        width: 140px;
-        height: 140px;
-    }
-    h2.birthday-name-placeholder {
-        font-size: 1.8em;
-    }
-    .message-text {
-        font-size: 1em;
-    }
     .carousel-button {
         font-size: 1.8em;
         padding: 6px 10px;
-        left: -30px;
-        right: -30px;
-    }
-    .music-controls button {
-        padding: 10px 15px;
-        font-size: 0.9em;
+        /* Hapus atau sesuaikan left/right jika sebelumnya ada */
+        /* left: unset; */
+        /* right: unset; */
     }
 }
